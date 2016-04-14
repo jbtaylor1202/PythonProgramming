@@ -2,7 +2,6 @@ import cmath
 import math
 import sys
 
-
 def get_float(msg, allow_zero):
     x = None
     while x is None:
