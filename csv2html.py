@@ -10,12 +10,12 @@ def main():
         try:
             line = input()
             if count == 0:
-                colour = "lightgreen"
+                color = "lightgreen"
             elif count %2:
-                colour = "white"
+                color = "white"
             else:
-                colour = "lightyellow"
-            print_line(line, colour, maxwidth)
+                color = "lightyellow"
+            print_line(line, color, maxwidth)
             count += 1
         except EOFError:
             break
@@ -29,14 +29,14 @@ def print_end():
     print("</table>")
 
 
-def print_line(line, colour, maxwidth):
-    print("<tr bgcolour='{0}'>".format(colour))
+def print_line(line, color, maxwidth):
+    print("<tr bgcolor='{0}'>".format(color))
     fields = extract_fields(line)
     for field in fields:
         if not field:
             print("<td></td>")
         else:
-            numnber = field.replace(",","")
+            number = field.replace(",", "")
             try:
                 x = float(number)
                 print("<td align='right'>{0:d}</td>".format(round(x)))
@@ -44,11 +44,13 @@ def print_line(line, colour, maxwidth):
                 field = field.title()
                 field = field.replace(" And ", " and ")
                 if len(field) <= maxwidth:
-                    field(escape_html(field))
+                    field = escape_html(field)
                 else:
-                          field = "{0}...".format(escape_html(field[:maxwidth]))
-                          print("<td>{0}</td}".format(field))
-print("</tr>")
+                    field = "{0} ...".format(
+                            escape_html(field[:maxwidth]))
+                print("<td>{0}</td>".format(field))
+    print("</tr>")
+
 
 def extract_fields(line):
     fields = []
