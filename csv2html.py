@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
 
+'''
+Ensure CSV named co2-sample.csv is in the directory
+Run via command line with command:
+csv2html.py <co2-sample.csv> test.html
+The file test.html will appear in the directoy
+'''
+
 import sys
 
 def main():
